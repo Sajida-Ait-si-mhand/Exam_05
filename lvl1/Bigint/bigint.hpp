@@ -170,18 +170,6 @@ public:
         return result;
     }
 
-    // bigint operator>>(unsigned int shift) const {
-    //     if (shift == 0) return *this;
-        
-    //     bigint result = *this;
-    //     if (shift >= result.digits.size()) 
-    //         result.digits = "0";
-    //     else 
-    //         result.digits.erase(result.digits.begin(), result.digits.begin() + shift);
-    //     result.removeLeadingZeros();
-    //     return result;
-    // }
-
     bigint operator>>(unsigned int shift) const {
         if (shift == 0) return *this;
         
