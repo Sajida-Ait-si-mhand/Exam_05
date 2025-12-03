@@ -44,27 +44,42 @@ private:
 public:
     bigint() : digits("0") {}
 
-    bigint(unsigned long long num) {
-        if (num == 0) {
-            digits = "0";
-            return;
-        }
-        std::ostringstream oss;
-        oss << num;
-        digits = oss.str();
-        std::reverse(digits.begin(), digits.end());
-    }
+    // bigint(unsigned long long num) {
+    //     if (num == 0) {
+    //         digits = "0";
+    //         return;
+    //     }
+    //     std::ostringstream oss;
+    //     oss << num;
+    //     digits = oss.str();
+    //     std::reverse(digits.begin(), digits.end());
+    // }
 
-    bigint(const std::string& str) {
-        if (str.empty() || !std::all_of(str.begin(), str.end(), ::isdigit)) {
-            digits = "0";
-        } else {
-            digits = str;
-            std::reverse(digits.begin(), digits.end());
-            removeLeadingZeros();
-        }
+    // bigint(const std::string& str) {
+    //     if (str.empty() || !std::all_of(str.begin(), str.end(), ::isdigit)) {
+    //         digits = "0";
+    //     } else {
+    //         digits = str;
+    //         std::reverse(digits.begin(), digits.end());
+    //         removeLeadingZeros();
+    //     }
+    // }
+    bigint(unsigned long long num){
+    if(num == 0)
+    {
+        digits = "0";
+        return;
     }
-
+    digits = std::to_string(num);
+    std::reverse(digits.begin(), digits.end());
+    };
+	// str => revese
+	bigint (const std::string &str)
+	{
+		digits = str;
+		std::reverse(digits.begin(), digits.end());
+        removeLeadingZeros();
+	}
     bigint operator+(const bigint& other) const {
         bigint result;
         result.digits = addStrings(this->digits, other.digits);
