@@ -1,5 +1,11 @@
 #include "searchable_bag.hpp"
 
+// new code
+#include "searchable_tree_bag.hpp"
+#include "searchable_array_bag.hpp"
+#include "set.hpp"
+//end new code
+
 #include <iostream>
 
 int main(int argc, char **argv) {
@@ -9,6 +15,7 @@ int main(int argc, char **argv) {
   searchable_bag *a = new searchable_array_bag;
 
   for (int i = 1; i < argc; i++) {
+    std::cout << argv[i] << std::endl;
     t->insert(atoi(argv[i]));
     a->insert(atoi(argv[i]));
   }
@@ -17,9 +24,9 @@ int main(int argc, char **argv) {
 
   for (int i = 1; i < argc; i++) {
     std::cout << t->has(atoi(argv[i])) << std::endl;
-    std::cout << a->has(atoi(argv[i])) << std::endl;
+    std::cout << argv[i] << " should exist: " << a->has(atoi(argv[i])) << std::endl; 
     std::cout << t->has(atoi(argv[i]) - 1) << std::endl;
-    std::cout << a->has(atoi(argv[i]) - 1) << std::endl;
+    std::cout << atoi(argv[i]) - 1 << " should not exist: " <<  a->has(atoi(argv[i]) - 1) << std::endl; 
   }
 
   t->clear();
@@ -40,15 +47,18 @@ int main(int argc, char **argv) {
     sa.get_bag().print();
     st.print();
     sa.clear();
-    sa.insert(
-        (int[]){
-            1,
-            2,
-            3,
-            4,
-        },
-        4);
+    int arr[] = { 1, 2, 3, 4 };
+    sa.insert( arr, 4); 
     std::cout << std::endl;
+		std::cout << "extra tests for set " << std::endl;
+    // searchable_bag *
+    a->clear();
+    set test_s(*a);
+    test_s.insert(99);
+    test_s.insert(arr, 4);
+    test_s.insert(99);
+    test_s.print();
+    test_s.get_bag().print();
   }
 
   return 0;
