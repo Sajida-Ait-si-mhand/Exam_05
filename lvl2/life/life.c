@@ -72,7 +72,7 @@ int main(int ac, char *av[])
 	// Print arr[iterations % 2] without boarders
 	for (int h = 1; h <= height; h++) {
 		for (int w = 1; w <= width; w++)
-			putchar(arr[iterations % 2][w][h] ? '0' : ' '); //Hadi raha zero maxi la lettre O 
+			putchar(arr[iterations % 2][w][h] ? '0' : ' '); //Check the subject wax zero wla O 
 		putchar('\n'); // !
 	}
 	return 0;
