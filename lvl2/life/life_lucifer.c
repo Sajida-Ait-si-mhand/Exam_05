@@ -99,7 +99,7 @@ int main(int ac, char **av)
 	for (int y = 0; y < h; y++)
 	{
 		for (int x = 0; x < w; x++)
-			putchar(b[y * w + x] ? 'O' : ' ');
+			putchar(b[y * w + x] ? '0' : ' ');
 		putchar('\n');
 	}
 
